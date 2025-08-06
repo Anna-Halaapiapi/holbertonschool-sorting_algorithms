@@ -11,35 +11,28 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
-	listint_t *sortedpos; /* store sorted list position */
-	listint_t *next; /* store correct unsortedpos during loop */
-	listint_t *pos1; /* *pos4; store surrounding nodes */
+	listint_t *sortedpos, *next, *pos1; /* keep track of list positions */
 
-	/* if no pointer given or list empty */
-	if (list == NULL || *list == NULL)
+	if (list == NULL || *list == NULL) /* no pointer given or list empty */
 		return;
 
 	while (unsortedpos != NULL) /* iterate through unsorted part of list */
 	{
 		sortedpos = unsortedpos->prev; /* update sorted list position */
 		next = unsortedpos->next;/* save correct unsortedpos */
-
 		/* iterate through sorted list */
 		while (sortedpos != NULL && unsortedpos->n < sortedpos->n)
 		{
-				pos1 = sortedpos->prev; /* surrounding node */
-				/* pos4 = unsortedpos->next; surrounding node */
+			pos1 = sortedpos->prev; /* surrounding node */
 
-				/* remove unsortedpos */
-				if (unsortedpos->prev != NULL)
+				if (unsortedpos->prev != NULL) /* remove unsortedpos */
 				{
 				unsortedpos->prev->next = unsortedpos->next;
 				}
 				if (unsortedpos->next != NULL)
 				unsortedpos->next->prev = unsortedpos->prev;
 
-				/* insert unsortedpos in correct pos */
-				unsortedpos->prev = pos1;
+				unsortedpos->prev = pos1; /* insert unsortedpos in correct pos */
 				unsortedpos->next = sortedpos;
 				sortedpos->prev = unsortedpos;
 
