@@ -8,7 +8,7 @@
  * Return: void
  */
 
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
 	int temp = *a; /* temp var to store int a */
 	*a = *b; /* store b in a */
