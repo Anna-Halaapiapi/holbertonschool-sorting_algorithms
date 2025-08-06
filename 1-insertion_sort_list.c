@@ -1,5 +1,5 @@
 #include "sort.h"
-#include <stddef.h>
+0;10;1c#include <stddef.h>
 
 /**
  * insertion_sort_list - sorts list in ascending order using insertion sort
@@ -53,7 +53,7 @@ void insertion_sort_list(listint_t **list)
 					*list = unsortedpos; /* update head */
 				}
 				print_list(*list);/*print list after each swap*/
-				sortedpos = unsorted->prev;
+				sortedpos = unsortedpos->prev;
 		}
 		unsortedpos = next;/* move to next unsorted node */
 	}
