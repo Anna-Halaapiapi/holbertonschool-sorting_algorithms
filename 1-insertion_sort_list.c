@@ -58,7 +58,7 @@ void insertion_sort_list(listint_t **list)
 					pos4->prev = sortedpos; /* upd. ptr */
 				}
 				sortedpos->next = pos4; /* upd. ptr */
-				print_list(list);/* print list after each swap*/
+				print_list(*list);/* print list after each swap*/
 				break; /* exit inner loop after insertion */
 		}
 		unsortedpos = next;/* move to next unsorted node */
