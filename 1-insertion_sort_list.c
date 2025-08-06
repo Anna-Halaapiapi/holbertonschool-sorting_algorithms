@@ -10,57 +10,44 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
-	listint_t *sortedpos; /* store sorted list position */
-	listint_t *next; /* store correct unsortedpos during loop */
-	listint_t *pos1, *pos4;/* store surrounding nodes */
+	listint_t *sorted = NULL;
+	listint_t *curr = list;
+	listint_t *next, current_sorted;
 
-	/* if no pointer given or list empty */
-	if (list == NULL || *list == NULL)
+	if (*list == NULL)
 		return;
 
-	while (unsortedpos != NULL) /* iterate through unsorted part of list */
+	while (curr != NULL)
 	{
-		sortedpos = unsortedpos->prev; /* update sorted list position */
-		next = unsortedpos->next;/* save correct unsortedpos */
-
-		/* iterate through sorted list */
-		while (sortedpos != NULL && unsortedpos->n < sortedpos->n)
+	next = curr->next;
+		if (sorted == NULL || sorted->n >= curr->data)
 		{
-				pos1 = sortedpos->prev; /* surrounding node */
-				pos4 = unsortedpos->next; /* surrounding node */
+			curr->next = sorted;
 
-				/* remove unsortedpos */
-				if (unsortedpos->prev != NULL)
-				{
-				unsortedpos->prev->next = unsortedpos->next;
-				}
-				if (unsortedpos->next != NULL)
-				unsortedpos->next->prev = unsortedpos->prev;
+		if (sorted != NULL)
+		sorted->prev = curr;
 
-				/* insert unsortedpos in correct pos */
-				if (pos1 != NULL) /* if pos1 isn't head->prev */
-				{
-					pos1->next = unsortedpos; /* upd. ptr */
-				}
-
-				else /* if pos1 is at head->prev */
-				{
-					*list = unsortedpos; /* update head */
-				}
-				/* adjust pointers */
-				unsortedpos->prev = pos1;
-				unsortedpos->next = sortedpos;
-				sortedpos->prev = unsortedpos;
-
-				if (pos4 != NULL) /* if pos4 isn't tail->next */
-				{
-					pos4->prev = sortedpos; /* upd. ptr */
-				}
-				sortedpos->next = pos4; /* upd. ptr */
-				print_list(*list);/* print list after each swap*/
-				break;
+		sorted = curr;
+		sorted->prev = NULL
 		}
-		unsortedpos = next;/* move to next unsorted node */
+
+	else
+	{
+		current_sorted = sorted;
+		while (current_sorted->next != NULL &&
+			current_sorted->next->n < curr->n)
+		{
+			current_sorted = current_sorted->next;
+		}
+
+		curr->next = current_stored->next;
+
+		if (current_sorted->next != NULL)
+			current_sorted->next->prev = curr;
+
+		current_sorted->next = curr;
+		curr->prev = current_sorted;
+	}
+		curr = next;
 	}
 }
