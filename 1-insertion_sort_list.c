@@ -13,7 +13,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
 	listint_t *sortedpos; /* store sorted list position */
 	listint_t *next; /* store correct unsortedpos during loop */
-	listint_t *pos1, /* *pos4; store surrounding nodes */
+	listint_t *pos1; /* *pos4; store surrounding nodes */
 
 	/* if no pointer given or list empty */
 	if (list == NULL || *list == NULL)
