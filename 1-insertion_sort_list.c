@@ -26,12 +26,25 @@ void insertion_sort_list(listint_t **list)
 				pos1 = sortedpos->prev; /* surrounding node */
 				pos4 = unsortedpos->next; /* surrounding node */
 
-				pos1->next = unsortedpos; /* adjust pointers */
-				sortedpos->next = pos4;
+				if (pos1 != NULL) /* if pos1 isn't head->prev */
+				{
+					pos1->next = unsortedpos; /* upd. ptr */
+				}
+
+				else /* if pos1 is at head->prev */
+				{
+					*list = unsortedpos; /* update head */
+				}
+
+				sortedpos->next = pos4; /* adjust pointers */
 				sortedpos->prev = unsortedpos;
 				unsortedpos->next = sortedpos;
 				unsortedpos->prev = pos1;
-				pos4->prev = sortedpos;
+
+				if (pos4 != NULL) /* if pos4 isn't tail->next */
+				{
+					pos4->prev = sortedpos; /* upd. ptr */
+				}
 			}
 			sortedpos = sortedpos->prev;/*step back 1 in sortedpos*/
 		}
