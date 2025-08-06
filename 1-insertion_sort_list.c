@@ -50,6 +50,6 @@ void insertion_sort_list(listint_t **list)
 			}
 			sortedpos = sortedpos->prev;/*step back 1 in sortedpos*/
 		}
-		unsortedpos = unsortedpos->next;/* move to next unsorted node */
+		unsortedpos = next;/* move to next unsorted node */
 	}
 }
