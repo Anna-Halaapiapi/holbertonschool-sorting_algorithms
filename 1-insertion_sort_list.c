@@ -38,7 +38,7 @@ void insertion_sort_list(listint_t **list)
 				if (unsortedpos->next != NULL)
 				unsortedpos->next->prev = unsortedpos->prev;
 
-				/* insert unsortedpos */
+				/* insert unsortedpos in correct pos */
 				if (pos1 != NULL) /* if pos1 isn't head->prev */
 				{
 					pos1->next = unsortedpos; /* upd. ptr */
@@ -57,7 +57,8 @@ void insertion_sort_list(listint_t **list)
 				{
 					pos4->prev = sortedpos; /* upd. ptr */
 				}
-				sortedpos->next = pos4;
+				sortedpos->next = pos4; /* upd. ptr */
+				break; /* exit inner loop after insertion */
 
 			sortedpos = sortedpos->prev;/*step back 1 in sortedpos*/
 		}
