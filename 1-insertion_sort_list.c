@@ -1,5 +1,5 @@
 #include "sort.h"
-0;10;1c#include <stddef.h>
+#include <stddef.h>
 
 /**
  * insertion_sort_list - sorts list in ascending order using insertion sort
