@@ -12,11 +12,13 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
 	listint_t *sortedpos; /* store sorted list position */
+	listint_t *next; /* store correct unsortedpos during loop */
 	listint_t *pos1, *pos4;/* store surrounding nodes */
 
 	while (unsortedpos != NULL) /* iterate through unsorted part of list */
 	{
 		sortedpos = unsortedpos->prev; /* update sorted list position */
+		next = unsortedpos->next;/* save correct unsortedpos */
 
 		while (sortedpos != NULL) /* iterate through sorted list */
 		{
