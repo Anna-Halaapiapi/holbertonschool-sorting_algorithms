@@ -10,9 +10,9 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t unsortedpos = list; /*store unsorted list pos, start at head*/
-	listint_t sortedpos; /* store sorted list position */
-	listint_t pos1, pos2, pos3, pos4; /* store node positions for swap */
+	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
+	listint_t *sortedpos; /* store sorted list position */
+	listint_t *pos1, *pos2, *pos3, *pos4;/* store node positions for swap */
 
 	while (unsortedpos != NULL) /* iterate through unsorted part of list */
 	{
@@ -30,8 +30,8 @@ void insertion_sort_list(listint_t **list)
 
 				pos1->next = unsortedpos; /* adjust pointers */
 				sortedpos->next = pos4;
-				sortedpos->prev = unsorted;
-				unsortedpos->next = sorted;
+				sortedpos->prev = unsortedpos;
+				unsortedpos->next = sortedpos;
 				unsortedpos->prev = pos1;
 				pos4->prev = sortedpos;
 			}
