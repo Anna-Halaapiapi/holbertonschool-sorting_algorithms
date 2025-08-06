@@ -36,7 +36,7 @@ void insertion_sort_list(listint_t **list)
 				unsortedpos->prev->next = unsortedpos->next;
 				}
 				if (unsortedpos->next != NULL)
-				unsortedpos->next->prev = unsorted->prev;
+				unsortedpos->next->prev = unsortedpos->prev;
 
 				/* insert unsortedpos */
 				if (pos1 != NULL) /* if pos1 isn't head->prev */
