@@ -26,8 +26,8 @@ void swap(int *a, int *b)
 
 void bubble_sort(int *array, size_t size)
 {
-	int i = 0; /* counter for full passes through array */
-	int j = 0; /* counter for inner loop comparison in each pass */
+	size_t i = 0; /* counter for full passes through array */
+	size_t j = 0; /* counter for inner loop comparison in each pass */
 
 	if (size < 2) /* if array < 2 - do not sort */
 		return;
