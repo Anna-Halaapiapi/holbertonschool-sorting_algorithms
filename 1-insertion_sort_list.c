@@ -12,7 +12,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *unsortedpos = *list;/*store unsorted list pos start at head*/
 	listint_t *sortedpos; /* store sorted list position */
-	listint_t *pos1, *pos2, *pos3, *pos4;/* store node positions for swap */
+	listint_t *pos1, *pos4;/* store surrounding nodes */
 
 	while (unsortedpos != NULL) /* iterate through unsorted part of list */
 	{
@@ -24,8 +24,6 @@ void insertion_sort_list(listint_t **list)
 			if (unsortedpos->n < sortedpos->n) /* compare values */
 			{
 				pos1 = sortedpos->prev; /* surrounding node */
-				pos2 = sortedpos; /* node to be swapped */
-				pos3 = unsortedpos; /* node to be swapped */
 				pos4 = unsortedpos->next; /* surrounding node */
 
 				pos1->next = unsortedpos; /* adjust pointers */
