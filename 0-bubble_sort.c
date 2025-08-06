@@ -10,7 +10,7 @@
 
 void swap(int* a, int* b)
 {
-	int temp = *a; /* temp variable to store int a */
+	int temp = *a; /* temp var to store int a */
 	*a = *b; /* store b in a */
 	*b = temp; /* store a in b */
 }
@@ -25,28 +25,25 @@ void swap(int* a, int* b)
 
 void bubble_sort(int *array, size_t size)
 {
-	int i = 0; /* outer loop counter */
-	int j = 0; /* inner loop counter */
-	int swapped; /* flag - 0 (false) 1 (true) */
+	int i = 0; /* counter for full passes through array */
+	int j = 0; /* counter for inner loop comparison in each pass */
 
-	while (i < size) /* repeat passes through array */
+	if (size < 2) /* if array < 2 - do not sort */
+		return;
+
+	while (i < size) /* perform full pass through array */
 	{
-		swapped = 0; /* reset swapped to false for each pass */
-		j = 0; /* reset inner loop to start for each pass */
+		j = 0; /* reset inner loop counter */
 
 		while (j < size - i - 1) /* compare adjacent ints */
 		{
-			if (array[j] > array[j + 1]) /* ints aren't in order */
+			if (array[j] > array[j + 1]) /* if int a > int b */
 			{
 				swap(&array[j], &array[j + 1]); /* swap ints */
-				swapped = 1; /* change swapped to true */
+				print_array(array, size); /* print array */
 			}
-			j = j + 1; /* move to next pair */
+			j = j + 1;
 		}
-
-		if (swapped == 0) /* if no swaps - array is sorted */
-		break;
-
-		i = i + 1; /* increment outer loop counter */
+		i = i + 1;
 	}
 }
