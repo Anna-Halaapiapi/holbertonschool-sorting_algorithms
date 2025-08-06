@@ -39,6 +39,10 @@ void insertion_sort_list(listint_t **list)
 				unsortedpos->next->prev = unsortedpos->prev;
 
 				/* insert unsortedpos in correct pos */
+				unsortedpos->prev = pos1;
+				unsortedpos->next = sortedpos;
+				sortedpos->prev = unsortedpos;
+
 				if (pos1 != NULL) /* if pos1 isn't head->prev */
 				{
 					pos1->next = unsortedpos; /* upd. ptr */
@@ -48,16 +52,6 @@ void insertion_sort_list(listint_t **list)
 				{
 					*list = unsortedpos; /* update head */
 				}
-				/* adjust pointers */
-				unsortedpos->prev = pos1;
-				unsortedpos->next = sortedpos;
-				sortedpos->prev = unsortedpos;
-
-				if (pos4 != NULL) /* if pos4 isn't tail->next */
-				{
-					pos4->prev = sortedpos; /* upd. ptr */
-				}
-				sortedpos->next = pos4; /* upd. ptr */
 				print_list(*list);/* print list after each swap*/
 				break;
 		}
