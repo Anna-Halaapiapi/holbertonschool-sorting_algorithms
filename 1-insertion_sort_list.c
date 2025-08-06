@@ -15,19 +15,30 @@ void insertion_sort_list(listint_t **list)
 	listint_t *next; /* store correct unsortedpos during loop */
 	listint_t *pos1, *pos4;/* store surrounding nodes */
 
+	/* if no pointer given or list empty */
+	if (list == NULL || *list == NULL)
+		return;
+
 	while (unsortedpos != NULL) /* iterate through unsorted part of list */
 	{
 		sortedpos = unsortedpos->prev; /* update sorted list position */
 		next = unsortedpos->next;/* save correct unsortedpos */
 
-		while (sortedpos != NULL) /* iterate through sorted list */
+		/* iterate through sorted list */
+		while (sortedpos != NULL && unsortedpos->n < sortedpos->n)
 		{
-
-			if (unsortedpos->n < sortedpos->n) /* compare values */
-			{
 				pos1 = sortedpos->prev; /* surrounding node */
 				pos4 = unsortedpos->next; /* surrounding node */
 
+				/* remove unsortedpos */
+				if (unsortedpos->prev != NULL)
+				{
+				unsortedpos->prev->next = unsortedpos->next;
+				}
+				if (unsortedpos->next != NULL)
+				unsortedpos->next->prev = unsorted->prev;
+
+				/* insert unsortedpos */
 				if (pos1 != NULL) /* if pos1 isn't head->prev */
 				{
 					pos1->next = unsortedpos; /* upd. ptr */
@@ -37,17 +48,17 @@ void insertion_sort_list(listint_t **list)
 				{
 					*list = unsortedpos; /* update head */
 				}
-
-				sortedpos->next = pos4; /* adjust pointers */
-				sortedpos->prev = unsortedpos;
-				unsortedpos->next = sortedpos;
+				/* adjust pointers */
 				unsortedpos->prev = pos1;
+				unsortedpos->next = sortedpos;
+				sortedpos->prev = unsortedpos;
 
 				if (pos4 != NULL) /* if pos4 isn't tail->next */
 				{
 					pos4->prev = sortedpos; /* upd. ptr */
 				}
-			}
+				sortedpos->next = pos4;
+
 			sortedpos = sortedpos->prev;/*step back 1 in sortedpos*/
 		}
 		unsortedpos = next;/* move to next unsorted node */
