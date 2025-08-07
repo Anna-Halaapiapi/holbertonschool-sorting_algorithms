@@ -25,7 +25,7 @@ void swap(int *a, int *b)
  * Return: index of pivot after partitioning
  */
 
-int partition(int array[], int low, int high)
+int partition(int array[], int low, int high, size_t size)
 {
 	int pivot = array[high]; /* set pivot to last array element */
 	int i = (low - 1); /* track positions for swapping smaller elements */
@@ -38,9 +38,12 @@ int partition(int array[], int low, int high)
 		{
 			i++; /* increment index of smaller element */
 			swap(&array[i], &array[j]); /* perform swap */
+			print_array(array, size); /* print array */
+
 		}
 	}
 	swap(&array[i + 1], &array[high]); /* put pivot in correct position */
+	print_array(array, size); /* print array */
 	return (i + 1); /* return index of pivot */
 }
 
@@ -53,18 +56,18 @@ int partition(int array[], int low, int high)
  * Return: void
  */
 
-void quick_sort_recur(int *array, int low, int high)
+void quick_sort_recur(int *array, int low, int high, size_t size)
 {
 	int part_index;
 
 	if (low < high)
 	{
 		/* partition array, get pivot index */
-		part_index = partition(array, low, high);
+		part_index = partition(array, low, high, size);
 		/* recursive quicksort on left subarray */
-		quick_sort_recur(array, low, part_index - 1);
+		quick_sort_recur(array, low, part_index - 1, size);
 		/* recursive quicksort on right subarray */
-		quick_sort_recur(array, part_index + 1, high);
+		quick_sort_recur(array, part_index + 1, high, size);
 	}
 }
 
@@ -85,7 +88,4 @@ void quick_sort(int *array, size_t size)
 
 	/* start recursive quicksort on original array */
 	quick_sort_recur(array, 0, size - 1);
-
-	/* printarray */
-	print_array(array, size);
 }
