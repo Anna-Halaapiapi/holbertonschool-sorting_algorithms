@@ -27,7 +27,7 @@ void swap(int *a, int *b)
 
 int partition(int array[], int low, int high)
 {
-	int pivot = arr[high]; /* set pivot to last array element */
+	int pivot = array[high]; /* set pivot to last array element */
 	int i = (low - 1); /* set i to index of smaller element */
 	int j; /* loop counter */
 
@@ -43,6 +43,26 @@ int partition(int array[], int low, int high)
 	swap(&array[i + 1], &array[high]);
 	return (i + 1);
 }
+/**
+ * quick_sort_recur - recursive quicksort
+ * @array: array of integers
+ * @low: starting index
+ * @high: end index
+ *
+ * Return: void
+ */
+
+void quick_sort_recur(int *array, int low, int high)
+{
+	int part_index;
+
+	if (low < high)
+	{
+		part_index = partition(array, low, high);
+		quick_sort_recur(array, low, part_index - 1);
+		quick_sort_recur(array, part_index + 1, high);
+	}
+}
 
 /**
  * quick_sort - sorts array of ints in ascending order using quick sort
@@ -55,13 +75,9 @@ int partition(int array[], int low, int high)
 
 void quick_sort(int *array, size_t size)
 {
-	int low, high, partindex;
+	if (array == NULL || size < 2)
+		return;
 
-	if (low < high)
-	{
-	partindex = partition(array, low, high);
+	quick_sort_recur(array, 0, size - 1);
 
-	quick_sort(array, size);
-	quicksort(array, size);
-	}
 }
