@@ -1,5 +1,5 @@
 #include "sort.h"
-0;10;1c#include <stddef.h>
+#include <stddef.h>
 
 /**
  * selection_sort - sorts array of ints in ascending order using selection sort
