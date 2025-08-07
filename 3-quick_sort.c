@@ -37,13 +37,19 @@ int partition(int array[], int low, int high, size_t size)
 		if (array[j] <= pivot)
 		{
 			i++; /* increment index of smaller element */
-			swap(&array[i], &array[j]); /* perform swap */
-			print_array(array, size); /* print array */
 
+			if (i != j)
+			{
+				swap(&array[i], &array[j]); /* perform swap */
+				print_array(array, size); /* print array */
+			}
 		}
 	}
-	swap(&array[i + 1], &array[high]); /* put pivot in correct position */
-	print_array(array, size); /* print array */
+	if ((i + 1) != high)
+	{
+		swap(&array[i + 1], &array[high]); /* put pivot in correct pos*/
+		print_array(array, size); /* print array */
+	}
 	return (i + 1); /* return index of pivot */
 }
 
