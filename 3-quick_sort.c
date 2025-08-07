@@ -22,7 +22,7 @@ void swap(int *a, int *b)
  * @low: starting index of array
  * @high:ending index of array
  *
- * Return: void
+ * Return: index of pivot after partitioning
  */
 
 int partition(int array[], int low, int high)
@@ -31,7 +31,7 @@ int partition(int array[], int low, int high)
 	int i = (low - 1); /* set i to index of smaller element */
 	int j; /* loop counter */
 
-	for (int j = low; j <= high - 1; j++)
+	for (j = low; j <= high - 1; j++)
 	{
 		/* if current element is <= pivot */
 		if (array[j] <= pivot)
