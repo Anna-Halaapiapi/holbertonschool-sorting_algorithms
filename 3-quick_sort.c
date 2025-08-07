@@ -87,5 +87,5 @@ void quick_sort(int *array, size_t size)
 		return;
 
 	/* start recursive quicksort on original array */
-	quick_sort_recur(array, 0, size - 1);
+	quick_sort_recur(array, 0, size - 1, size);
 }
