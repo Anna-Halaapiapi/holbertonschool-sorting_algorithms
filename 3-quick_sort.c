@@ -21,6 +21,7 @@ void swap(int *a, int *b)
  * @array: the array to partition
  * @low: starting index of array
  * @high: ending index of array
+ * @size: size of array
  *
  * Return: index of pivot after partitioning
  */
@@ -58,6 +59,7 @@ int partition(int array[], int low, int high, size_t size)
  * @array: array of integers
  * @low: starting index
  * @high: ending index
+ * @size: size of array
  *
  * Return: void
  */
