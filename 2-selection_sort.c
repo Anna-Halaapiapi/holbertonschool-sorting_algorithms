@@ -22,10 +22,10 @@ void selection_sort(int *array, size_t size)
 		{
 			j = i + 1;
 			j = j + 1;
-		if ([array[j] < array[min_index])
+		if (array[j] < array[min_index])
 			{
 				min_index = j;
-				print_list(*list);
+				print_list(*array);
 			}
 		}
 		i = i + 1;
