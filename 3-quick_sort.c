@@ -82,7 +82,10 @@ void quick_sort(int *array, size_t size)
 	/* check if array is NULL or size < 2 */
 	if (array == NULL || size < 2)
 		return;
+
 	/* start recursive quicksort on original array */
 	quick_sort_recur(array, 0, size - 1);
 
+	/* printarray */
+	print_array(array, size);
 }
